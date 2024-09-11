@@ -19,7 +19,7 @@ const PlannerBar = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/get_travel_data/${authData.user_idx}/${project_idx}`
+        `https://plannerback.guswldaiccproject.com/get_travel_data/${authData.user_idx}/${project_idx}`
       );
       setPatchTravelData(response.data);
       setVisibleItems(
@@ -44,7 +44,7 @@ const PlannerBar = () => {
         console.log('Saving data to server:', newData);
 
         await axios.patch(
-          `http://localhost:8080/patch_travel_data/${project_idx}`,
+          `https://plannerback.guswldaiccproject.com/patch_travel_data/${project_idx}`,
           newData,
           {
             headers: {
@@ -72,7 +72,7 @@ const PlannerBar = () => {
     if (confirmDelete) {
       try {
         await axios.delete(
-          `http://localhost:8080/delete_travel_data/${authData.user_idx}/${item.project_idx}`
+          `https://plannerback.guswldaiccproject.com/delete_travel_data/${authData.user_idx}/${item.project_idx}`
         );
 
         await fetchData(); // 최신 데이터를 다시 가져오기
@@ -104,7 +104,7 @@ const PlannerBar = () => {
     if (confirmDelete) {
       try {
         await axios.delete(
-          `http://localhost:8080/delete_travel_data/${authData.user_idx}/${item.project_idx}`
+          `https://plannerback.guswldaiccproject.com/delete_travel_data/${authData.user_idx}/${item.project_idx}`
         );
 
         await fetchData(); // 최신 데이터를 다시 가져오기
