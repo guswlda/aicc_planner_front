@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
 import Home from './Components/Home';
 import Register from './Components/Auth/Register';
 import Login from './Components/Auth/Login';
@@ -12,7 +12,7 @@ import CalendarPage from './Components/CalendarPage';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="howtouse" element={<HowToUse />} />
         <Route path="/" element={<Home />} />
@@ -25,7 +25,7 @@ function App() {
         <Route path="createplanner" element={<CreatePlanner />} />
         <Route path="calendarpage" element={<CalendarPage />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
