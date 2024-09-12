@@ -79,15 +79,15 @@ const TravelProjectList = () => {
                   <div>여행 제목 없음</div>
                 )}
               </div>
-              <div className="bg-slate-300 p-1 m-2 rounded flex flex-col items-center shadow-md">
+              <div className="bg-slate-200 p-1 m-2 rounded flex flex-col items-center shadow-md">
                 {toggle ? (
                   <FaCaretUp
-                    className="cursor-pointer transition-transform ease-in-out transform hover:scale-125"
+                    className="cursor-pointer transition-transform ease-in-out transform hover:scale-125 duration-200"
                     onClick={toggleList}
                   />
                 ) : (
                   <FaCaretDown
-                    className="cursor-pointer transition-transform ease-in-out transform hover:scale-125"
+                    className="cursor-pointer transition-transform ease-in-out transform hover:scale-125 duration-200"
                     onClick={toggleList}
                   />
                 )}

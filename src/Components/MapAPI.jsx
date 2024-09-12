@@ -4,6 +4,7 @@ import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 const containerStyle = {
   width: '50%',
   height: '600px',
+  marginLeft: '5%',
 };
 
 // 한반도의 중심 위치 (위도, 경도)

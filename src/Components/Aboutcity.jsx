@@ -22,13 +22,13 @@ const Aboutcity = ({ cityId }) => {
     <>
       {city && (
         <div className="Aboutcity_page fixed top-0 bottom-0 left-0 right-0 flex items-center justify-center z-50">
-          <div className="Aboutcity_wrapper w-[67%] h-[80%] bg-white rounded-lg shadow-lg border border-gray-700">
+          <div className="Aboutcity_wrapper w-[65%] h-[75%] bg-white rounded-lg shadow-lg border border-gray-700">
             <div className="Aboutcity_container flex flex-col items-end p-4 b-2">
               <button onClick={handleClose} type="button">
                 <MdClose className="Logo_image_svg cursor-pointer" />
               </button>
             </div>
-            <div className="flex mt-10 p-16 w-full h-[80%] justify-center gap-5 border-2 border-white">
+            <div className="flex px-10 py-7 w-full h-[80%] justify-center gap-5 border-2 border-white">
               {/* 데스크탑 모니터 mt-32 / 노트북 모니터 mt-10 */}
               <div className="text_box w-1/2 flex flex-col h-full border-2 border-white gap-2">
                 <div className="text_title_eng text-xl text-gray-500 font-Montserrat">

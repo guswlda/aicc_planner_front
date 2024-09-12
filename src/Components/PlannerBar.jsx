@@ -93,6 +93,10 @@ const PlannerBar = () => {
     navigate('/createplanner');
   };
 
+  const handleNavigateToProject = () => {
+    navigate('/travelproject');
+  };
+
   // 새로 만든 삭제 버튼 기능 (기존 삭제 기능과 동일하게 변경)
   const handleDeleteAll = async (item) => {
     if (!item.project_idx) {
@@ -126,11 +130,16 @@ const PlannerBar = () => {
   return (
     <div className="flex h-full p-4">
       <div className="w-1/3 p-4 border-gray-300">
-        <div className="bg-white p-4 rounded-lg shadow-custom ">
-          <h2 className="text-xl w-full font-bold flex justify-between mb-4 pl-1">
-            {authData.name}님 여행 계획
-            {/* 새로 만든 수정 및 삭제 버튼 */}
-            <div className="">
+        <div className="bg-white p-4 rounded-lg shadow-custom">
+          <h2 className=" text-xl w-full font-bold flex justify-between items-center mb-4">
+            <div className="pl-1 text-2xl">{authData.name}님 여행</div>
+            <div>
+              <button
+                onClick={handleNavigateToProject}
+                className="bg-gray-800 hover:bg-gray-400 text-white p-1 rounded mr-2"
+              >
+                목록
+              </button>
               <button
                 onClick={handleNavigateToPlanner}
                 className="bg-gray-500 hover:bg-gray-400 text-white p-1 rounded"
@@ -253,19 +262,19 @@ const PlannerBar = () => {
                         </p>
 
                         {/* 기존 수정 및 삭제 버튼 */}
-                        <div className="absolute right-8 flex space-x-2">
+                        <div className="absolute right-8 flex space-x-4">
                           <button
-                            className="bg-gray-500 hover:bg-gray-400 text-white p-1 rounded"
+                            className="bg-gray-500 hover:bg-gray-400 text-white p-2 rounded-md font-semibold"
                             onClick={() => handleEdit(item)}
                           >
                             수정
                           </button>
-                          <button
+                          {/* <button
                             className="bg-gray-800 hover:bg-gray-700 text-white p-1 rounded"
                             onClick={() => handleDelete(item)}
                           >
-                            삭제
-                          </button>
+                            삭제 
+                          </button> */}
                         </div>
                       </div>
                     </div>

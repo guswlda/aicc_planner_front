@@ -94,18 +94,42 @@ const Createplanner = () => {
     }
   };
 
-  const handleMain = async (item) => {
-    if (handleMain)
+  const handleMain = async (e) => {
+    e.preventDefault();
+
+    // Confirm with the user before proceeding
+    const userConfirmed = window.confirm(
+      '여행 계획 내용이 삭제됩니다. 삭제하시겠습니까?'
+    );
+
+    // If the user confirmed the deletion
+    if (userConfirmed) {
       try {
+        // Attempt to delete the data via axios
         await axios.delete(
           `https://plannerback.guswldaiccproject.com/delete_travel_data/${authData.user_idx}/${projectIdx}`
         );
 
+        // Navigate to the home page after deletion
         navigate('/');
       } catch (error) {
         console.error('데이터 삭제 중 오류 발생:', error);
       }
+    }
   };
+
+  // const handleMain = async (item) => {
+  //   if (handleMain)
+  //     try {
+  //       await axios.delete(
+  //         `https://plannerback.guswldaiccproject.com/delete_travel_data/${authData.user_idx}/${projectIdx}`
+  //       );
+
+  //       navigate('/');
+  //     } catch (error) {
+  //       console.error('데이터 삭제 중 오류 발생:', error);
+  //     }
+  // };
 
   return (
     <div className="Page_Wrapper flex flex-col h-screen bg-gray-900">
@@ -124,7 +148,7 @@ const Createplanner = () => {
                       <p>My Travel Planner</p>
                     </div>
                     <button onClick={handleMain} type="button">
-                      <MdClose className="Logo_image_svg hover:bg-slate-300 rounded-md" />
+                      <MdClose className="Logo_image_svg hover:bg-slate-200 rounded-md" />
                     </button>
                   </div>
                 </div>
@@ -191,5 +215,4 @@ const Createplanner = () => {
     </div>
   );
 };
-
 export default Createplanner;

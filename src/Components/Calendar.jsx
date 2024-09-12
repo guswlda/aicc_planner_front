@@ -77,29 +77,30 @@ const Calendar = () => {
   };
 
   return (
-    <div className="w-3/5 h-[80%] flex flex-col justify-center items-center">
-      <div className="w-[70%] h-[90%] bg-slate-200 p-4 rounded shadow-lg flex mr-4 border border-gray-400">
-        {loading ? (
-          <div>Loading...</div> // 로딩 중일 때 표시되는 메시지
-        ) : (
-          <div className="h-full flex justify-center items-center mb-4 pl-4">
+    <div className="w-3/5 flex flex-col justify-center items-center">
+      <div className="w-2/3 h-full rounded-base border border-slate-200 p-4 rounded-xl">
+        <div className="flex flex-col items-center">
+          <div className="text-2xl font-serif text-center mb-2">
+            <p className="bg-slate-100 px-2 rounded-md">
+              여행 계획 날짜가 어떻게 되시나요?
+            </p>
+          </div>
+          <div className="w-[80%] flex flex-col ">
             <DateRangePicker
               ranges={[selectionRange]} // 선택된 날짜 범위를 설정
               onChange={handleSelect} // 날짜 선택 시 호출되는 함수
-              className="w-full h-[90%] custom-calendar"
+              className="w-full custom-calendar"
               staticRanges={[]} // 프리셋 범위 비활성화
               inputRanges={[]} // 입력 범위 비활성화
-              locale={ko} // DateRangePicker의 로케일을 한국어로 설정
+              // locale={ko} // DateRangePicker의 로케일을 한국어로 설정
             />
+            <button
+              onClick={handleSaveDates}
+              className="bg-gray-700 text-white py-2 px-1 rounded-md hover:bg-gray-900"
+            >
+              날짜 선택
+            </button>
           </div>
-        )}
-        <div className="mt- mr-1">
-          <button
-            onClick={handleSaveDates}
-            className="bg-gray-900 text-white py-2 px-10 rounded hover:bg-gray-700 ml-6"
-          >
-            날짜 선택
-          </button>
         </div>
       </div>
     </div>

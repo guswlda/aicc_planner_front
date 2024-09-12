@@ -133,26 +133,33 @@ body {
 
 /* calendar custom text */
 .custom-calendar .rdrCalendarWrapper {
-  font-size: 1.3rem; /* Adjust the base font size */
+  font-size: 1.2rem; /* Adjust the base font size */
   color: #1f2937; /* from-gray-700 */
+  width:100%;
 }
 
 .custom-calendar .rdrMonthAndYearPickers select,
 .custom-calendar .rdrMonthPicker select,
 .custom-calendar .rdrYearPicker select {
-  font-size: 1.5rem; /* Adjust dropdown font size */
+  font-size: 1.2rem; /* Adjust dropdown font size */
 }
 
 .custom-calendar .rdrDayNumber span {
-  font-size: 1rem; /* Adjust day number font size */
+  font-size: 1.2rem; /* Adjust day number font size */
 }
 
 .custom-calendar .rdrDayToday span {
-  font-size: 1rem; /* Adjust day number font size */
+  font-size: 1.25rem; /* Adjust day number font size */
+
+}
+
+.custom-calendar .rdrDateDisplay{
+  display: none;
 }
 
 .custom-calendar .rdrWeekDay {
-  font-size: 1rem; /* Adjust weekday name font size */
+  font-size: 1.2rem; /* Adjust weekday name font size */
+  text-align: center;
 }
 
 .rdrDefinedRangesWrapper {
