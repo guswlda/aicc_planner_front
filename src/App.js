@@ -12,7 +12,7 @@ import CalendarPage from './Components/CalendarPage';
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="howtouse" element={<HowToUse />} />
         <Route path="/" element={<Home />} />
@@ -25,7 +25,7 @@ function App() {
         <Route path="createplanner" element={<CreatePlanner />} />
         <Route path="calendarpage" element={<CalendarPage />} />
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
