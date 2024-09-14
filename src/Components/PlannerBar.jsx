@@ -128,7 +128,7 @@ const PlannerBar = () => {
   );
 
   return (
-    <div className="flex h-full p-4">
+    <div className="flex h-full p-4 z-0">
       <div className="w-1/3 p-4 border-gray-300">
         <div className="bg-white p-4 rounded-lg shadow-custom">
           <h2 className=" text-xl w-full font-bold flex justify-between items-center mb-4">
