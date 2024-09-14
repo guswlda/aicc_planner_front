@@ -21,7 +21,7 @@ const Itempanel = () => {
             className="w-full h-full object-cover rounded-md"
           />
         </div>
-        <div
+        {/* <div
           className="Itempannel_text px-10 h-[10%] font-semibold font-gothicA1 flex gap-2 justify-end"
           style={{ width: '80%' }}
         >
@@ -30,7 +30,7 @@ const Itempanel = () => {
               How To Use <FaLongArrowAltRight className="w-5 h-5 ml-1" />
             </span>
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );
