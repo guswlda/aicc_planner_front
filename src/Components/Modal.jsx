@@ -97,7 +97,7 @@ const Modal = ({ handleSave }) => {
       return; // 제목이 없으면 함수 종료
     }
   
-    // 날짜가 비어있을 때
+    // 제목이 작성된 후 날짜가 비어있을 때
     if (!planner_data.planner_date) {
       toast.error('프로젝트 날짜를 선택해주세요!', {
         position: 'top-center',
@@ -111,10 +111,8 @@ const Modal = ({ handleSave }) => {
       return; // 날짜가 없으면 함수 종료
     }
   
-    // 제목과 날짜가 있을 때만 실행되는 코드
+    // 제목과 날짜가 모두 있는 경우에 실행되는 코드
     // 여기서 데이터를 서버로 제출하거나 다른 작업을 수행
-
-  
 
     try {
       const formData = new FormData();

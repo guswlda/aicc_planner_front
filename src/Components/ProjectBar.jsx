@@ -45,8 +45,8 @@ const TravelProjectList = () => {
     <div className="w-1/3 p-4 border-r h-full border-gray-300">
       <div className="sidebar-wrapper h-full flex flex-col">
         <div className="project_side_bar_box bg-white p-4 rounded-lg shadow-custom h-full">
-          <h2 className="text-xl font-bold mb-4 pl-8 ">
-            {authData.name}님 여행정보
+        <h2 className=" text-xl w-full font-bold flex justify-between items-center mb-4">
+            <div className="pl-1 text-2xl">{authData.name}님 여행</div>
           </h2>
           <div className="inner-sidebar-wrapper flex flex-col h-full">
             <div
