@@ -82,9 +82,9 @@ const Modal = ({ handleSave }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
+    // 제목이 비어있을 때
     if (!planner_data.planner_title) {
-      // 제목이 비어 있을 때 토스트 알림 표시
       toast.error('프로젝트 제목을 입력해주세요!', {
         position: 'top-center',
         autoClose: 3000, // 3초 후 자동 닫힘
@@ -94,8 +94,27 @@ const Modal = ({ handleSave }) => {
         draggable: true,
         progress: undefined,
       });
-      return; // 제목이 비어있으면 함수 종료
+      return; // 제목이 없으면 함수 종료
     }
+  
+    // 날짜가 비어있을 때
+    if (!planner_data.planner_date) {
+      toast.error('프로젝트 날짜를 선택해주세요!', {
+        position: 'top-center',
+        autoClose: 3000, // 3초 후 자동 닫힘
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return; // 날짜가 없으면 함수 종료
+    }
+  
+    // 제목과 날짜가 있을 때만 실행되는 코드
+    // 여기서 데이터를 서버로 제출하거나 다른 작업을 수행
+
+  
 
     try {
       const formData = new FormData();
