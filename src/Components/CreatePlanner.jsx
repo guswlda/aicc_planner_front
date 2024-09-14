@@ -211,6 +211,7 @@ const Createplanner = () => {
           </div>
         </div>
       </div>
+      <footer />
       <ToastContainer />
     </div>
   );
