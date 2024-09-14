@@ -218,7 +218,7 @@ const Modal = ({ handleSave }) => {
           <div className="date border rounded-md border-gray-400 w-full h-12 flex justify-center items-center">
             <div className="input-control w-full h-full flex items-center justify-center">
               <input
-                type="datetime-local"
+                type="date"
                 id="planner_date"
                 name="planner_date"
                 className="w-full h-full bg-white rounded-md p-2 text-xl font-thin"
