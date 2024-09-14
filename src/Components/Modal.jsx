@@ -138,106 +138,112 @@ const Modal = ({ handleSave }) => {
 
   return (
     <>
-      <div className="Modal_page fixed top-0 bottom-0 left-0 right-0 flex items-center justify-center bg-white bg-opacity-100 z-999">
-        <div className="Modal_wrapper w-[55%] h-[65%] bg-gray-100 rounded-md shadow-lg border border-gray-700 flex flex-col">
-          <div className="">
-            <div className="flex w-full">
-              <div className="Modal_container w-full flex flex-col px-3 ">
-                <div className="top w-full text-center p-4 font-bold text-4xl flex justify-between">
-                  <div className="flex items-center rounded-md">
-                    <TfiWrite className="mr-2" />
-                    <p>My Travel Planner</p> {/* 타이틀 */}
-                  </div>
-                  <button
-                    onClick={handleMain} // 버튼 클릭 시 메인 페이지로 이동
-                    type="button"
-                  >
-                    <MdClose className="Logo_image_svg hover:bg-slate-300 rounded-md" />
-                  </button>
-                </div>
-                <div className="location border rounded-md border-gray-400 bg-white mb-2 p-2 w-full flex justify-center items-center">
-                  <div className="input-control  w-full h-full ">
-                    <label htmlFor="planner_title" className="w-full h-full">
-                      <input
-                        type="text"
-                        id="planner_title"
-                        name="planner_title"
-                        placeholder="프로젝트 제목을 입력해주세요."
-                        className="w-full h-full rounded bg-white p-2 text-xl font-thin"
-                        value={planner_data.planner_title}
-                        onChange={handleChange}
-                      />
-                    </label>
-                  </div>
-                </div>
-                <div className="content mb-2 flex gap-2">
-                  <div className="photo_wrapper border rounded-md border-gray-400 bg-white w-1/2 h-80 flex items-center justify-center relative overflow-hidden">
-                    {imagePreview ? (
-                      <img
-                        src={imagePreview}
-                        alt="Preview"
-                        className="object-cover w-full h-full"
-                      />
-                    ) : (
-                      <span className="text-gray-500 text-2xl font-thin">
-                        사진 넣기
-                      </span>
-                    )}
-                    <input
-                      type="file"
-                      id="planner_img"
-                      name="planner_img"
-                      accept="image/*"
-                      onChange={handleImageChange}
-                      className="absolute inset-0 opacity-0 cursor-pointer"
-                    />
-                  </div>
-                  <div className="text border rounded-md border-gray-400  w-1/2 h-80 flex justify-center items-center ">
-                    <div className="input-control w-full h-full ">
-                      <label
-                        htmlFor="planner_description"
-                        className="w-full h-full"
-                      >
-                        <textarea
-                          type="text"
-                          id="planner_description"
-                          name="planner_description"
-                          placeholder="내용을 입력해주세요."
-                          className="w-full h-full bg-white rounded px-2 resize-none text-xl font-thin"
-                          value={planner_data.planner_description}
-                          onChange={handleChange}
-                          maxLength="400"
-                        />
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div className="date border rounded-md border-gray-400 w-full h-12 flex justify-center items-center">
-                  <div className="input-control w-full h-full flex items-center justify-center">
-                    <input
-                      type="datetime-local"
-                      id="planner_date"
-                      name="planner_date"
-                      className="w-full h-full bg-white rounded-md p-2 text-xl font-thin"
-                      value={planner_data.planner_date}
-                      onChange={handlePlanner_dateChange}
-                    />
-                  </div>
-                </div>
+      {/* 모달이 열리면 화면에 배경이 어두워지며, 모달창이 중앙에 고정 */}
+{isOpen && (
+  <div className="fixed inset-0 bg-white bg-opacity-100 z-40 flex items-center justify-center">
+    {/* 모달 창 */}
+    <div className="Modal_page fixed top-0 bottom-0 left-0 right-0 flex items-center justify-center bg-opacity-0 z-50">
+      <div className="Modal_wrapper w-[55%] h-[65%] bg-gray-100 rounded-md shadow-lg border border-gray-700 flex flex-col">
+        <div className="Modal_container w-full flex flex-col px-3">
+          {/* 상단 타이틀 및 닫기 버튼 */}
+          <div className="top w-full text-center p-4 font-bold text-4xl flex justify-between">
+            <div className="flex items-center rounded-md">
+              <TfiWrite className="mr-2" />
+              <p>My Travel Planner</p>
+            </div>
+            <button onClick={handleMain} type="button">
+              <MdClose className="Logo_image_svg hover:bg-slate-300 rounded-md" />
+            </button>
+          </div>
+          
+          {/* 입력 필드 */}
+          <div className="location border rounded-md border-gray-400 bg-white mb-2 p-2 w-full flex justify-center items-center">
+            <div className="input-control w-full h-full">
+              <label htmlFor="planner_title" className="w-full h-full">
+                <input
+                  type="text"
+                  id="planner_title"
+                  name="planner_title"
+                  placeholder="프로젝트 제목을 입력해주세요."
+                  className="w-full h-full rounded bg-white p-2 text-xl font-thin"
+                  value={planner_data.planner_title}
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
+          </div>
+          
+          {/* 사진 업로드 및 설명 */}
+          <div className="content mb-2 flex gap-2">
+            <div className="photo_wrapper border rounded-md border-gray-400 bg-white w-1/2 h-80 flex items-center justify-center relative overflow-hidden">
+              {imagePreview ? (
+                <img
+                  src={imagePreview}
+                  alt="Preview"
+                  className="object-cover w-full h-full"
+                />
+              ) : (
+                <span className="text-gray-500 text-2xl font-thin">사진 넣기</span>
+              )}
+              <input
+                type="file"
+                id="planner_img"
+                name="planner_img"
+                accept="image/*"
+                onChange={handleImageChange}
+                className="absolute inset-0 opacity-0 cursor-pointer"
+              />
+            </div>
+            
+            {/* 설명 텍스트 */}
+            <div className="text border rounded-md border-gray-400 w-1/2 h-80 flex justify-center items-center">
+              <div className="input-control w-full h-full">
+                <label htmlFor="planner_description" className="w-full h-full">
+                  <textarea
+                    type="text"
+                    id="planner_description"
+                    name="planner_description"
+                    placeholder="내용을 입력해주세요."
+                    className="w-full h-full bg-white rounded px-2 resize-none text-xl font-thin"
+                    value={planner_data.planner_description}
+                    onChange={handleChange}
+                    maxLength="400"
+                  />
+                </label>
               </div>
             </div>
-            <div className="Save_button_container flex items-end justify-end p-2">
-              <button
-                type="submit"
-                onClick={handleSubmit}
-                className="Sign_up rounded-md shadow-lg bg-gradient-to-r from-gray-700 to-gray-900 text-white hover:opacity-90 text-xl py-2 px-4 mr-1"
-              >
-                {modalType === 'update' ? '수정완료' : '할일 추가하기'}
-              </button>
+          </div>
+          
+          {/* 날짜 선택 */}
+          <div className="date border rounded-md border-gray-400 w-full h-12 flex justify-center items-center">
+            <div className="input-control w-full h-full flex items-center justify-center">
+              <input
+                type="datetime-local"
+                id="planner_date"
+                name="planner_date"
+                className="w-full h-full bg-white rounded-md p-2 text-xl font-thin"
+                value={planner_data.planner_date}
+                onChange={handlePlanner_dateChange}
+              />
             </div>
           </div>
         </div>
+        
+        {/* 저장 버튼 */}
+        <div className="Save_button_container flex items-end justify-end p-2">
+          <button
+            type="submit"
+            onClick={handleSubmit}
+            className="Sign_up rounded-md shadow-lg bg-gradient-to-r from-gray-700 to-gray-900 text-white hover:opacity-90 text-xl py-2 px-4 mr-1"
+          >
+            {modalType === 'update' ? '수정완료' : '할일 추가하기'}
+          </button>
+        </div>
       </div>
+    </div>
+  </div>
+)}
+
       <ToastContainer
         position="top-center"
         autoClose={3000}
