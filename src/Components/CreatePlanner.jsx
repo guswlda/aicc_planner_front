@@ -30,19 +30,26 @@ const Createplanner = () => {
   useEffect(() => {
     const ProjectIdData = async () => {
       try {
-        const ProjectData = await axios.get(`https://plannerback.guswldaiccproject.com/get_calendar_date/${authData.user_idx}`)
-      if (project_Idx) {
-        // API 호출을 통해 프로젝트에 따른 날짜 정보를 가져옴
-        const { project_idx, start_date, end_date } = response.data[0];
-        setStartDate(subtractOneDay(start_date) || '');
-        setEndDate(subtractOneDay(end_date) || '');
+        // API 호출
+        const response = await axios.get(`https://plannerback.guswldaiccproject.com/get_calendar_date/${authData.user_idx}`);
+        
+        // 데이터가 성공적으로 받아와졌는지 확인
+        if (response.data && response.data.length > 0) {
+          // 응답 데이터에서 필요한 값 추출
+          const { project_idx, start_date, end_date } = response.data[0];
+  
+          // start_date와 end_date에 대해 1일 빼기
+          setStartDate(subtractOneDay(start_date) || '');
+          setEndDate(subtractOneDay(end_date) || '');
+        }
+      } catch (error) {
+        console.error('Error fetching calendar data:', error);
       }
-    } catch (error) {
-      console.error('Error fetching calendar data:', error);
-    }
-  };
+    };
+  
     ProjectIdData();
-  }, [project_Idx]);
+  }, [project_Idx]); // project_Idx가 변경될 때마다 API 호출
+  
 
   useEffect(() => {
     const fetchCalendarData = async () => {
