@@ -19,10 +19,10 @@ const Additem = () => {
               className="flex items-center gap-x-2 group"
               onClick={handleOpenModal}
             >
-              <div className="border border-gray-500 rounded-md flex gap-2 p-3 mt-10">
+              <span className="border border-gray-500 rounded-md flex gap-2 p-3 mt-10">
                 <GoPlusCircle />
                 여행 목록 추가하기
-              </div>
+              </span>
             </button>
           </div>
         </div>
