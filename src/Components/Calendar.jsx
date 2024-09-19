@@ -59,46 +59,21 @@ const Calendar = () => {
       endDate: formattedEndDate, // 포맷된 종료 날짜
     };
 
-    if (dataToSend) {
-      e.preventDefault();
-      const userConfirmed = window.confirm(
-        '날짜 수정이 어렵습니다. 여행 계획 날짜가 맞습니까?'
-      );
-      if (userConfirmed) {
-        axios
-          .post(
-            'https://plannerback.guswldaiccproject.com/post_calendar',
-            dataToSend,
-            {
-              headers: { 'Content-Type': `application/json` },
-            }
-          )
-          .then((response) => {
-            navigate('/createplanner'); // 성공적으로 저장된 후에 페이지 이동
-          })
-          .catch((error) => {
-            console.error('Error saving dates:', error); // 에러 발생 시 콘솔에 출력
-          });
-      } else {
-        navigate('/'); // 루트 페이지로 리디렉션
-      }
-    }
-
     // POST 요청으로 선택된 날짜를 서버에 전송
-    // axios
-    //   .post(
-    //     'https://plannerback.guswldaiccproject.com/post_calendar',
-    //     dataToSend,
-    //     {
-    //       headers: { 'Content-Type': `application/json` },
-    //     }
-    //   )
-    //   .then((response) => {
-    //     navigate('/createplanner'); // 성공적으로 저장된 후에 페이지 이동
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error saving dates:', error); // 에러 발생 시 콘솔에 출력
-    //   });
+    axios
+      .post(
+        'https://plannerback.guswldaiccproject.com/post_calendar',
+        dataToSend,
+        {
+          headers: { 'Content-Type': `application/json` },
+        }
+      )
+      .then((response) => {
+        navigate('/createplanner'); // 성공적으로 저장된 후에 페이지 이동
+      })
+      .catch((error) => {
+        console.error('Error saving dates:', error); // 에러 발생 시 콘솔에 출력
+      });
   };
 
   return (
