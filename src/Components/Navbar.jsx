@@ -65,7 +65,7 @@ const Navbar = () => {
               </div>
             </div>
           ) : (
-            <div className="Sign_box_container flex space-x-4">
+            <div className="Sign_box_container flex items-center space-x-1">
               <Link
                 to="/register"
                 className="text-black hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-900 hover:text-white px-4 py-2 rounded"
