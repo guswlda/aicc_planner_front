@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css'; // 최신 Swiper CSS 경로
 import 'swiper/css'; // Swiper 기본 CSS 파일
@@ -48,6 +48,16 @@ const SlideSection = () => {
 
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+
+  useEffect(() => {
+    const swiper = document.querySelector('.swiper').swiper; // Swiper 인스턴스에 접근
+    if (prevRef.current && nextRef.current && swiper) {
+      swiper.params.navigation.prevEl = prevRef.current;
+      swiper.params.navigation.nextEl = nextRef.current;
+      swiper.navigation.init();
+      swiper.navigation.update();
+    }
+  }, []);
 
   return (
     <div className="SlideSection_container flex flex-col items-center mt-10 mb-10 relative">
