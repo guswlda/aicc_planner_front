@@ -283,7 +283,7 @@ const PlannerBar = () => {
               )}
             </div>
           ) : (
-            <div className="flex justify-center items-center flex-col mt-24">
+            <div className="h-full flex justify-center items-center flex-col">
               <Additem handleSave={handleSave} />
             </div>
           )}
