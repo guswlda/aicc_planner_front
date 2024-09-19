@@ -215,7 +215,7 @@ const PlannerBar = () => {
                   >
                     <div className="bg-gray-400 shadow-xl rounded-xl overflow-hidden h-[95%] w-full mx-auto p-1">
                       <div className="bg-gray-100 text-gray-600 py-4 px-4 rounded-lg mb-1">
-                        <h3 className="text-xl font-semibold">
+                        <h3 className="text-xl">
                           {item.planner_title ||
                             '프로젝트 제목을 입력해주세요...'}
                         </h3>
@@ -239,7 +239,7 @@ const PlannerBar = () => {
                           style={{ height: 390 }}
                         >
                           <p
-                            className="text-gray-600 text-xl text-left font-semibold"
+                            className="text-gray-600 text-xl text-left"
                             style={{
                               whiteSpace: 'pre-wrap',
                               wordBreak: 'break-word',
@@ -252,7 +252,7 @@ const PlannerBar = () => {
                         </div>
                       </div>
                       <div className="bg-gray-100 text-gray-600 py-4 px-6 rounded-lg flex items-center justify-between">
-                        <p className="text-xl font-semibold">
+                        <p className="text-xl">
                           📅&ensp;
                           {item.planner_date
                             ? new Date(item.planner_date).toLocaleDateString(
@@ -264,7 +264,7 @@ const PlannerBar = () => {
                         {/* 기존 수정 및 삭제 버튼 */}
                         <div className="absolute right-8 flex space-x-4">
                           <button
-                            className="bg-gray-500 hover:bg-gray-400 text-white p-2 rounded-md font-semibold"
+                            className="bg-gray-500 hover:bg-gray-400 text-white p-2 rounded-md"
                             onClick={() => handleEdit(item)}
                           >
                             수정

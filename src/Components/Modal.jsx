@@ -174,7 +174,7 @@ const Modal = ({ handleSave }) => {
                 </div>
 
                 {/* 입력 필드 */}
-                <div className="location border rounded-md border-gray-400 bg-white mb-2 p-2 w-full flex justify-center items-center mt-2">
+                <div className="location border rounded-md border-gray-400 bg-white mb-2 p-2 w-full flex justify-center items-center mt-4">
                   <div className="input-control w-full h-full">
                     <label htmlFor="planner_title" className="w-full h-full">
                       <input
