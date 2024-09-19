@@ -28,6 +28,22 @@ const Createplanner = () => {
   const [endDate, setEndDate] = useState('');
 
   useEffect(() => {
+    if (project_idx) {
+      // API 호출을 통해 프로젝트에 따른 날짜 정보를 가져옴
+      axios.get(`https://plannerback.guswldaiccproject.com/get_calendar_date/${authData.user_idx}`)
+        .then(response => {
+          const { title, start_date, end_date } = response.data;
+          setProjectTitle(title);
+          setStartDate(start_date);
+          setEndDate(end_date);
+        })
+        .catch(error => {
+          console.error('데이터를 가져오는 중 오류 발생:', error);
+        });
+    }
+  }, [project_idx]);
+
+  useEffect(() => {
     const fetchCalendarData = async () => {
       try {
         const response = await axios.get(
