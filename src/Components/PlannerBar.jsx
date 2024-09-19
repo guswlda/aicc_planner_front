@@ -88,9 +88,9 @@ const PlannerBar = () => {
     dispatch(openModal({ modalType: 'update', task: item }));
   };
 
-  // 새로 만든 수정 버튼 기능
-  const handleNavigateToPlanner = () => {
-    navigate('/createplanner');
+  // 수정된 수정 버튼 기능
+  const handleNavigateToPlanner = (project_idx) => {
+    navigate(`/createplanner?project_idx=${project_idx}`);
   };
 
   const handleNavigateToProject = () => {
