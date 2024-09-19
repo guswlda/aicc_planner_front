@@ -10,8 +10,6 @@ import { toast, ToastContainer } from 'react-toastify'; // Toast 기능을 추�
 import 'react-toastify/dist/ReactToastify.css'; // Toast 스타일을 추가
 import { useLocation } from 'react-router-dom';
 
-
-
 const Createplanner = () => {
   const navigate = useNavigate();
   const authData = useSelector((state) => state.auth.authData);
