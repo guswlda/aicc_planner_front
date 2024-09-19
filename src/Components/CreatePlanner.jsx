@@ -41,7 +41,8 @@ const Createplanner = () => {
       console.error('Error fetching calendar data:', error);
     }
   };
-  }, [project_idx]);
+    ProjectIdData();
+  }, [project_Idx]);
 
   useEffect(() => {
     const fetchCalendarData = async () => {
