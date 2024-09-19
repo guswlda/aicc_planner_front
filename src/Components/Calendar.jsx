@@ -75,7 +75,7 @@ const Calendar = () => {
       .then((response) => {
         // 서버에서 성공적으로 응답을 받으면 실행되는 부분
         console.log('서버로부터 받은 응답:', response.data); // 서버의 응답 데이터를 콘솔에 출력
-        navigate(`/createplanner?project_idx=${project_idx}`); // 응답 후 페이지 이동
+        navigate('/createplanner'); // 응답 후 페이지 이동
       })
       .catch((error) => {
         // 요청이 실패했을 때 실행되는 부분
