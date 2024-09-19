@@ -1,135 +1,141 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import axios from 'axios'; // axios를 사용하여 서버와 통신
+import { Link, useNavigate, useParams } from 'react-router-dom'; // 페이지 이동과 URL에서 파라미터를 가져오기 위한 훅들
+import { useSelector } from 'react-redux'; // Redux 상태를 가져오는 훅
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
-import { TfiWrite } from 'react-icons/tfi';
+import { TfiWrite } from 'react-icons/tfi'; // 아이콘 사용
 import { MdClose } from 'react-icons/md';
-import { toast, ToastContainer } from 'react-toastify'; // Toast 기능을 추가
-import 'react-toastify/dist/ReactToastify.css'; // Toast 스타일을 추가
-import { useLocation } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify'; // Toast 알림을 위한 라이브러리
+import 'react-toastify/dist/ReactToastify.css'; // Toast 알림의 스타일
 
 const Createplanner = () => {
-  const navigate = useNavigate();
-  const authData = useSelector((state) => state.auth.authData);
-  const location = useLocation();
-  const { projectIdx } = location.state || {};
+  const navigate = useNavigate(); // 페이지 이동을 도와주는 함수
+  const authData = useSelector((state) => state.auth.authData); // Redux에서 사용자 인증 정보를 가져옴
 
-  // Use projectIdx as needed in your component
-  console.log(projectIdx);
-
-  // 쿼리 파라미터에서 project_idx 추출
-  const queryParams = new URLSearchParams(location.search);
-  const project_Idx = queryParams.get('project_idx');
-
-  const [projectTitle, setProjectTitle] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  // 입력 폼에서 사용할 상태 값들
+  const [projectTitle, setProjectTitle] = useState(''); // 여행 계획의 제목
+  const [startDate, setStartDate] = useState(''); // 시작 날짜
+  const [endDate, setEndDate] = useState(''); // 종료 날짜
+  const [projectIdx, setProjectIdx] = useState(''); // 프로젝트 ID
+  const { project_idx } = useParams(); // URL 파라미터에서 프로젝트 ID 가져옴
 
   useEffect(() => {
+    // 컴포넌트가 처음 렌더링될 때 서버에서 데이터를 가져옴
     const fetchCalendarData = async () => {
       try {
+        // 서버에 GET 요청을 보내서 데이터를 받아옴
         const response = await axios.get(
           `https://plannerback.guswldaiccproject.com/get_calendar_date/${authData.user_idx}`
         );
+
+        // 서버에서 응답받은 데이터가 있을 때 처리
         if (response.data && response.data.length > 0) {
+          // 서버에서 받아온 첫 번째 데이터에서 필요한 값들을 가져옴
           const { project_idx, start_date, end_date } = response.data[0];
-          setStartDate(subtractOneDay(start_date) || '');
-          setEndDate(subtractOneDay(end_date) || '');
+
+          // 받아온 프로젝트 ID와 날짜를 상태 값에 설정
+          setProjectIdx(project_idx);
+          setStartDate(subtractOneDay(start_date) || ''); // 시작 날짜를 하루 빼서 설정
+          setEndDate(subtractOneDay(end_date) || ''); // 종료 날짜도 하루 빼서 설정
         }
       } catch (error) {
-        console.error('Error fetching calendar data:', error);
+        // 데이터를 가져오는 중에 오류가 발생하면 콘솔에 출력
+        console.error('캘린더 데이터를 가져오는 중 오류 발생:', error);
       }
     };
 
+    // 함수 호출 (서버에서 데이터 가져옴)
     fetchCalendarData();
-  }, [authData.user_idx]);
+  }, [authData.user_idx]); // 사용자 ID가 변경될 때마다 데이터를 다시 가져옴
 
-
+  // 날짜에서 하루를 빼는 함수 (서버에서 받아온 날짜가 UTC 기준일 수 있기 때문에 하루를 빼줌)
   const subtractOneDay = (dateStr) => {
-    if (!dateStr) return '';
-    const date = new Date(dateStr);
-    date.setDate(date.getDate());
-    return date.toISOString().split('T')[0];
+    if (!dateStr) return ''; // 만약 날짜가 없으면 빈 문자열 반환
+    const date = new Date(dateStr); // 문자열을 Date 객체로 변환
+    date.setDate(date.getDate()); // 하루를 빼지 않고 그대로 사용
+    return date.toISOString().split('T')[0]; // 날짜를 'YYYY-MM-DD' 형식으로 변환
   };
 
+  // '저장' 버튼을 눌렀을 때 실행되는 함수
   const handleSave = async () => {
     if (!projectTitle) {
+      // 제목을 입력하지 않았을 경우, 사용자에게 알림 표시
       toast.error('제목을 입력해주세요!', {
-        position: 'top-center',
-        autoClose: 3000,
+        position: 'top-center', // 화면 상단 중앙에 알림 표시
+        autoClose: 3000, // 3초 후에 자동으로 닫힘
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
       });
-      return;
+      return; // 제목이 없으면 함수 실행을 중단
     }
 
-    if (!project_Idx) {
-      console.error('프로젝트가 생성되지 않았습니다');
+    if (!projectIdx) {
+      console.error('프로젝트가 생성되지 않았습니다'); // 프로젝트 ID가 없으면 콘솔에 오류 출력
       return;
     }
 
     try {
+      // 서버에 PATCH 요청을 보내서 제목과 날짜 정보를 업데이트
       await axios.patch(
         'https://plannerback.guswldaiccproject.com/update_planner_title',
         {
-          project_idx: project_Idx,
-          project_title: projectTitle,
-          start_date: startDate,
-          end_date: endDate,
+          project_idx: projectIdx, // 프로젝트 ID
+          project_title: projectTitle, // 입력한 제목
+          start_date: startDate, // 입력한 시작 날짜
+          end_date: endDate, // 입력한 종료 날짜
         }
       );
-      navigate(`/planner/${project_Idx}`);
+
+      // 프로젝트가 성공적으로 저장되면 해당 프로젝트 페이지로 이동
+      navigate(`/planner/${projectIdx}`);
     } catch (error) {
-      console.error('Error updating project:', error);
+      // 저장 중에 오류가 발생하면 콘솔에 출력
+      console.error('프로젝트 업데이트 중 오류 발생:', error);
     }
   };
 
+  // 제목 입력 시 상태 값을 업데이트하는 함수
   const handleChange = (e) => {
     setProjectTitle(e.target.value);
   };
 
+  // 날짜 입력 시 상태 값을 업데이트하는 함수
   const handleDateChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target; // 입력된 값의 이름과 값을 가져옴
     if (name === 'startDate') {
-      setStartDate(value);
+      setStartDate(value); // 시작 날짜 업데이트
     } else if (name === 'endDate') {
-      setEndDate(value);
+      setEndDate(value); // 종료 날짜 업데이트
     }
   };
 
+  // '삭제' 버튼을 눌렀을 때 실행되는 함수
   const handleMain = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // 기본 동작(페이지 새로고침)을 막음
 
+    // 삭제 여부를 사용자에게 묻는 메시지
     const userConfirmed = window.confirm('여행 계획 내용이 삭제됩니다. 삭제하시겠습니까?');
+
+    // 사용자가 확인 버튼을 눌렀을 때만 실행
     if (userConfirmed) {
       try {
+        // 서버에 DELETE 요청을 보내서 데이터를 삭제
         await axios.delete(
-          `https://plannerback.guswldaiccproject.com/delete_travel_data/${authData.user_idx}/${project_Idx}`
+          `https://plannerback.guswldaiccproject.com/delete_travel_data/${authData.user_idx}/${projectIdx}`
         );
+
+        // 삭제가 완료되면 홈으로 이동
         navigate('/');
       } catch (error) {
+        // 삭제 중에 오류가 발생하면 콘솔에 출력
         console.error('데이터 삭제 중 오류 발생:', error);
       }
     }
   };
-
-  // const handleMain = async (item) => {
-  //   if (handleMain)
-  //     try {
-  //       await axios.delete(
-  //         `https://plannerback.guswldaiccproject.com/delete_travel_data/${authData.user_idx}/${projectIdx}`
-  //       );
-
-  //       navigate('/');
-  //     } catch (error) {
-  //       console.error('데이터 삭제 중 오류 발생:', error);
-  //     }
-  // };
 
   return (
     <div className="Page_Wrapper flex flex-col h-screen bg-gray-900">
@@ -172,8 +178,8 @@ const Createplanner = () => {
                         id="projectTitle"
                         name="projectTitle"
                         placeholder="제목을 입력해주세요."
-                        value={projectTitle} // 입력된 제목을 상태에서 가져옴
-                        onChange={handleChange} // 제목 입력 시 상태 업데이트
+                        value={projectTitle}
+                        onChange={handleChange}
                         className="Logo_text bg-white w-full rounded-md text-gray-600 input-placeholder p-3 border border-slate-300"
                       />
                       <input
@@ -183,7 +189,6 @@ const Createplanner = () => {
                         value={startDate}
                         onChange={handleDateChange}
                         className="Logo_text bg-white w-full rounded-md p-3 border border-slate-300"
-                        disabled
                       />
                       <input
                         type="date"
@@ -192,7 +197,6 @@ const Createplanner = () => {
                         value={endDate}
                         onChange={handleDateChange}
                         className="Logo_text bg-white w-full rounded-md p-3 border border-slate-300"
-                        disabled
                       />
                     </div>
                   </div>
@@ -218,4 +222,5 @@ const Createplanner = () => {
     </div>
   );
 };
+
 export default Createplanner;
