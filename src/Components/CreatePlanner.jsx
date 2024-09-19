@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
@@ -11,12 +11,16 @@ import 'react-toastify/dist/ReactToastify.css'; // Toast 스타일을 추가
 
 const Createplanner = ({project_idx}) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const authData = useSelector((state) => state.auth.authData);
+
+  // 쿼리 파라미터에서 project_idx 추출
+  const queryParams = new URLSearchParams(location.search);
+  const project_Idx = queryParams.get('project_idx');
+
   const [projectTitle, setProjectTitle] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [projectIdx, setProjectIdx] = useState('');
-  const { project_idx } = useParams();
 
   useEffect(() => {
     const fetchCalendarData = async () => {
@@ -26,7 +30,6 @@ const Createplanner = ({project_idx}) => {
         );
         if (response.data && response.data.length > 0) {
           const { project_idx, start_date, end_date } = response.data[0];
-          setProjectIdx(project_idx);
           setStartDate(subtractOneDay(start_date) || '');
           setEndDate(subtractOneDay(end_date) || '');
         }
@@ -47,10 +50,9 @@ const Createplanner = ({project_idx}) => {
 
   const handleSave = async () => {
     if (!projectTitle) {
-      // 제목이 비어있을 때 Toast 알림 표시
       toast.error('제목을 입력해주세요!', {
         position: 'top-center',
-        autoClose: 3000, // 3초 후에 자동 닫힘
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -60,7 +62,7 @@ const Createplanner = ({project_idx}) => {
       return;
     }
 
-    if (!projectIdx) {
+    if (!project_Idx) {
       console.error('프로젝트가 생성되지 않았습니다');
       return;
     }
@@ -69,13 +71,13 @@ const Createplanner = ({project_idx}) => {
       await axios.patch(
         'https://plannerback.guswldaiccproject.com/update_planner_title',
         {
-          project_idx: projectIdx,
+          project_idx: project_Idx,
           project_title: projectTitle,
           start_date: startDate,
           end_date: endDate,
         }
       );
-      navigate(`/planner/${projectIdx}`);
+      navigate(`/planner/${project_Idx}`);
     } catch (error) {
       console.error('Error updating project:', error);
     }
@@ -97,20 +99,12 @@ const Createplanner = ({project_idx}) => {
   const handleMain = async (e) => {
     e.preventDefault();
 
-    // Confirm with the user before proceeding
-    const userConfirmed = window.confirm(
-      '여행 계획 내용이 삭제됩니다. 삭제하시겠습니까?'
-    );
-
-    // If the user confirmed the deletion
+    const userConfirmed = window.confirm('여행 계획 내용이 삭제됩니다. 삭제하시겠습니까?');
     if (userConfirmed) {
       try {
-        // Attempt to delete the data via axios
         await axios.delete(
-          `https://plannerback.guswldaiccproject.com/delete_travel_data/${authData.user_idx}/${projectIdx}`
+          `https://plannerback.guswldaiccproject.com/delete_travel_data/${authData.user_idx}/${project_Idx}`
         );
-
-        // Navigate to the home page after deletion
         navigate('/');
       } catch (error) {
         console.error('데이터 삭제 중 오류 발생:', error);
