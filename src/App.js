@@ -22,7 +22,7 @@ function App() {
         <Route path="calendar" element={<Calendar />} />
         <Route path="planner/:project_idx" element={<Planner />} />
         <Route path="travelproject" element={<TravelProject />} />
-        <Route path="createplanner/:project_idx" element={<CreatePlanner />} />
+        <Route path="createplanner" element={<CreatePlanner />} />
         <Route path="calendarpage" element={<CalendarPage />} />
       </Routes>
     </BrowserRouter>
