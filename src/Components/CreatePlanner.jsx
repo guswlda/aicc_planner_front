@@ -8,11 +8,18 @@ import { TfiWrite } from 'react-icons/tfi';
 import { MdClose } from 'react-icons/md';
 import { toast, ToastContainer } from 'react-toastify'; // Toast 기능을 추가
 import 'react-toastify/dist/ReactToastify.css'; // Toast 스타일을 추가
+import { useLocation } from 'react-router-dom';
 
-const Createplanner = ({project_idx}) => {
+
+
+const Createplanner = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const authData = useSelector((state) => state.auth.authData);
+  const location = useLocation();
+  const { projectIdx } = location.state || {};
+
+  // Use projectIdx as needed in your component
+  console.log(projectIdx);
 
   // 쿼리 파라미터에서 project_idx 추출
   const queryParams = new URLSearchParams(location.search);

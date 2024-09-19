@@ -90,7 +90,7 @@ const PlannerBar = () => {
 
   // 수정된 수정 버튼 기능
   const handleNavigateToPlanner = (project_idx) => {
-    navigate(`/createplanner?project_idx=${project_idx}`);
+    navigate(`/createplanner`, { state: { projectIdx: project_idx } });
   };
 
   const handleNavigateToProject = () => {
