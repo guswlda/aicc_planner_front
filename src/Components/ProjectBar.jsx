@@ -39,7 +39,7 @@ const TravelProjectList = () => {
   };
 
   // Determine the number of projects to show based on the toggle state
-  const displayedProjects = toggle ? getTravelData : getTravelData.slice(0, 10);
+  const displayedProjects = toggle ? getTravelData : getTravelData.slice(0, 5);
 
   return (
     <div className="w-1/3 p-4 border-r h-full border-gray-300">
