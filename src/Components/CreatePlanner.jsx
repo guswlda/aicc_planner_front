@@ -9,7 +9,7 @@ import { MdClose } from 'react-icons/md';
 import { toast, ToastContainer } from 'react-toastify'; // Toast 기능을 추가
 import 'react-toastify/dist/ReactToastify.css'; // Toast 스타일을 추가
 
-const Createplanner = ({project_Idx}) => {
+const Createplanner = ({project_idx}) => {
   const navigate = useNavigate();
   const authData = useSelector((state) => state.auth.authData);
   const [projectTitle, setProjectTitle] = useState('');
