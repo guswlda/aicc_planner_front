@@ -183,7 +183,7 @@ const Createplanner = () => {
                         value={startDate}
                         onChange={handleDateChange}
                         className="Logo_text bg-white w-full rounded-md p-3 border border-slate-300"
-                        readOnly
+                        disabled
                       />
                       <input
                         type="date"
@@ -192,7 +192,7 @@ const Createplanner = () => {
                         value={endDate}
                         onChange={handleDateChange}
                         className="Logo_text bg-white w-full rounded-md p-3 border border-slate-300"
-                        readOnly
+                        disabled
                       />
                     </div>
                   </div>
