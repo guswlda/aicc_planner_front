@@ -89,8 +89,8 @@ const PlannerBar = () => {
   };
 
   // 수정된 수정 버튼 기능
-  const handleNavigateToPlanner = (project_Idx) => {
-    navigate(`/createplanner?project_idx=${project_Idx}`);
+  const handleNavigateToPlanner = (project_idx) => {
+    navigate(`/createplanner?project_idx=${project_idx}`);
   };
 
   const handleNavigateToProject = () => {
