@@ -48,73 +48,33 @@ const Calendar = () => {
     return `${year}-${month}-${day}`;
   };
 
-  const handleSaveDates = (e) => {
-    e.preventDefault(); // 기본 동작 방지 (예: 폼 제출 등)
-
-    if (selectionRange.startDate && selectionRange.endDate) {
-      const userConfirmed = window.confirm('여행 계획 날짜가 맞으십니까?'); // 사용자 확인 대화상자
-
-      if (userConfirmed) {
-        const formattedStartDate = formatDate(selectionRange.startDate);
-        const formattedEndDate = formatDate(selectionRange.endDate);
-
-        const dataToSend = {
-          user_idx: authData.user_idx, // 사용자의 고유 식별자
-          startDate: formattedStartDate, // 포맷된 시작 날짜
-          endDate: formattedEndDate, // 포맷된 종료 날짜
-        };
-
-        // POST 요청으로 선택된 날짜를 서버에 전송
-        axios
-          .post(
-            'https://plannerback.guswldaiccproject.com/post_calendar',
-            dataToSend,
-            {
-              headers: { 'Content-Type': `application/json` },
-            }
-          )
-          .then((response) => {
-            navigate('/createplanner'); // 성공적으로 저장된 후에 페이지 이동
-          })
-          .catch((error) => {
-            console.error('Error saving dates:', error); // 에러 발생 시 콘솔에 출력
-          });
-      } else {
-        // 사용자가 취소할 경우 달력 페이지로 이동
-        navigate('/calendarpage'); // 달력 페이지로 리디렉션
-      }
-    } else {
-      console.log('날짜를 선택해 주세요.');
-    }
-  };
-
   // 선택된 날짜 범위를 서버에 저장하는 함수
-  // const handleSaveDates = () => {
-  //   const formattedStartDate = formatDate(selectionRange.startDate);
-  //   const formattedEndDate = formatDate(selectionRange.endDate);
+  const handleSaveDates = () => {
+    const formattedStartDate = formatDate(selectionRange.startDate);
+    const formattedEndDate = formatDate(selectionRange.endDate);
 
-  //   const dataToSend = {
-  //     user_idx: authData.user_idx, // 사용자의 고유 식별자
-  //     startDate: formattedStartDate, // 포맷된 시작 날짜
-  //     endDate: formattedEndDate, // 포맷된 종료 날짜
-  //   };
+    const dataToSend = {
+      user_idx: authData.user_idx, // 사용자의 고유 식별자
+      startDate: formattedStartDate, // 포맷된 시작 날짜
+      endDate: formattedEndDate, // 포맷된 종료 날짜
+    };
 
-  //   // POST 요청으로 선택된 날짜를 서버에 전송
-  //   axios
-  //     .post(
-  //       'https://plannerback.guswldaiccproject.com/post_calendar',
-  //       dataToSend,
-  //       {
-  //         headers: { 'Content-Type': `application/json` },
-  //       }
-  //     )
-  //     .then((response) => {
-  //       navigate('/createplanner'); // 성공적으로 저장된 후에 페이지 이동
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error saving dates:', error); // 에러 발생 시 콘솔에 출력
-  //     });
-  // };
+    // POST 요청으로 선택된 날짜를 서버에 전송
+    axios
+      .post(
+        'https://plannerback.guswldaiccproject.com/post_calendar',
+        dataToSend,
+        {
+          headers: { 'Content-Type': `application/json` },
+        }
+      )
+      .then((response) => {
+        navigate('/createplanner'); // 성공적으로 저장된 후에 페이지 이동
+      })
+      .catch((error) => {
+        console.error('Error saving dates:', error); // 에러 발생 시 콘솔에 출력
+      });
+  };
 
   return (
     <div className="w-3/5 flex flex-col justify-center items-center">
