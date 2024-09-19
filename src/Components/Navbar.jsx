@@ -39,7 +39,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center" onClick={handleCloseModal}>
             <PiAirplaneTiltLight
               className="Logo_image_svg from-gray-700 to-gray-900"
-              style={{ fontSize: '2rem' }}
+              style={{ fontSize: '1rem' }}
             />
             <div className="Logo_text ml-2 text-2xl font-bold font-montserrat">
               My Travel Planner
@@ -65,7 +65,7 @@ const Navbar = () => {
               </div>
             </div>
           ) : (
-            <div className="Sign_box_wrapper flex space-x-4">
+            <div className="Sign_box_container flex items-center space-x-1">
               <Link
                 to="/register"
                 className="text-black hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-900 hover:text-white px-4 py-2 rounded"
