@@ -193,10 +193,10 @@ const PlannerBar = () => {
         </div>
       </div>
 
-      <div className="w-2/3  p-4 border-l h-full">
+      <div className="w-2/3 p-4 border-l h-full">
         <div className="bg-white rounded-lg shadow-custom h-full flex flex-col justify-start">
-          <h2 className=" text-2xl tracking-wide mt-2 font-bold text-center items-center justify-center flex">
-            <p className="shadow-md font-bold p-1 rounded-md bg-gradient-to-r from-gray-600 to-gray-800 w-1/4 text-white">
+          <h2 className=" text-2xl tracking-wide mt-4 font-bold text-center items-center justify-center flex">
+            <p className="shadow-md font-bold p-2 rounded-md bg-gradient-to-r from-gray-600 to-gray-800 w-1/4 text-white">
               <div className=" text-white">{authData.name}님 여행 정보</div>
             </p>
             {isOpen && <Modal handleSave={handleSave} />}
