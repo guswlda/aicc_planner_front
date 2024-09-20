@@ -1,6 +1,6 @@
 # CRM Service Project 
 
-* My Travel Planner
+### My Travel Planner
 
 <p align="center">
   <img src="./images/mainpage.png">
