@@ -44,3 +44,63 @@
 
 
 # 2. 개발 환경
+
+* 기술 스택
+
+```
+📦 Front - React App
+├── 📂 .github
+│   └── 📂 workflows
+│       └── cicd.yml (CI/CD 파이프라인 설정 파일)
+│
+├── 📂 build
+│   └── (빌드된 파일들)
+│
+├── 📂 node_modules
+│   └── (의존성 모듈들)
+│
+├── 📂 public
+│   └── (정적 파일들)
+│
+├── 📂 src
+│   ├── 📂 Component
+│   │   ├── 📂 Auth
+│   │   │   └── (인증 관련 컴포넌트)
+│   │   ├── 📂 Home
+│   │   │   └── (홈 페이지 컴포넌트)
+│   │   ├── 📂 Calendarpage
+│   │   │   └── (캘린더 페이지 컴포넌트)
+│   │   ├── 📂 Map
+│   │   │   └── (지도 관련 컴포넌트)
+│   │   ├── 📂 Planner
+│   │   │   └── (플래너 관련 컴포넌트)
+│   ├── Apps.js
+│   └── Index.css
+│
+├── dockerfile
+│   └── (Docker 설정 파일)
+│
+├── nginx.conf
+│   └── (Nginx 설정 파일)
+│
+├── package.json
+│   └── (의존성 및 프로젝트 정보)
+│
+└── README.md
+
+```
+
+# 3. 구현 기능
+
+<p align="center">
+  <img src="./images/MapApi.png">
+</p>
+
+* 여행 계획 시 참고할 Google 지도 구현
+
+
+<p align="center">
+  <img src="./images/MapRoad.png">
+</p>
+
+* Google 지도 로드맵 기능 지원
