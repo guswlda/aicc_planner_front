@@ -87,11 +87,11 @@ const Calendar = () => {
     <div className="w-3/5 flex flex-col justify-center items-center">
       <div className="w-2/3 h-full rounded-base border border-slate-200 p-3 rounded-xl">
         <div className="flex flex-col items-center">
-          {/* <div className="text-2xl font-serif text-center mb-2">
+          <div className="text-2xl font-serif text-center mb-2">
             <p className="bg-slate-100 px-2 rounded-md">
               여행 계획 날짜가 어떻게 되시나요?
             </p>
-          </div> */}
+          </div>
           <div className="w-[80%] flex flex-col ">
             <DateRangePicker
               ranges={[selectionRange]} // 선택된 날짜 범위
