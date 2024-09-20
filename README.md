@@ -48,45 +48,45 @@
 ### 기술 스택
 
 ```
-📦 Front - React App
+# 📦 Front - React App
 ├── 📂 .github
 │   └── 📂 workflows
-│       └── cicd.yml (CI/CD 파이프라인 설정 파일)
+│       └── 📄 cicd.yml (CI/CD 파이프라인 설정 파일)
 │
 ├── 📂 build
-│   └── (빌드된 파일들)
+│   └── 📄 (빌드된 파일들)
 │
 ├── 📂 node_modules
-│   └── (의존성 모듈들)
+│   └── 📄 (의존성 모듈들)
 │
 ├── 📂 public
-│   └── (정적 파일들)
+│   └── 📄 (정적 파일들)
 │
 ├── 📂 src
 │   ├── 📂 Component
 │   │   ├── 📂 Auth
-│   │   │   └── (인증 관련 컴포넌트)
+│   │   │   └── 📄 (인증 관련 컴포넌트)
 │   │   ├── 📂 Home
-│   │   │   └── (홈 페이지 컴포넌트)
+│   │   │   └── 📄 (홈 페이지 컴포넌트)
 │   │   ├── 📂 Calendarpage
-│   │   │   └── (캘린더 페이지 컴포넌트)
+│   │   │   └── 📄 (캘린더 페이지 컴포넌트)
 │   │   ├── 📂 Map
-│   │   │   └── (지도 관련 컴포넌트)
+│   │   │   └── 📄 (지도 관련 컴포넌트)
 │   │   ├── 📂 Planner
-│   │   │   └── (플래너 관련 컴포넌트)
-│   ├── Apps.js
-│   └── Index.css
+│   │   │   └── 📄 (플래너 관련 컴포넌트)
+│   ├── 📄 Apps.js
+│   └── 📄 Index.css
 │
-├── dockerfile
-│   └── (Docker 설정 파일)
+├── 📄 dockerfile
+│   └── 📄 (Docker 설정 파일)
 │
-├── nginx.conf
-│   └── (Nginx 설정 파일)
+├── 📄 nginx.conf
+│   └── 📄 (Nginx 설정 파일)
 │
-├── package.json
-│   └── (의존성 및 프로젝트 정보)
+├── 📄 package.json
+│   └── 📄 (의존성 및 프로젝트 정보)
 │
-└── README.md
+└── 📄 README.md
 
 ```
 
@@ -264,8 +264,17 @@ index.css
 
 # 5. 트러블 슈팅
 
+
+### 지도 표현이 되지 않는 ERROR
+
+
+* isloaded 함수를 사용하여 이전의 지도를 그대로 표현
+
+
+* 여행 지도 클릭 시 화면 표현
+
+
 ```
-Troble Shooting
 
 Google Map - isloading
 
@@ -284,6 +293,13 @@ const GoogleMapComponent = () => {
 
 ```
 
+
+### 캘린더 당일 날짜 표현 되지 않는 ERROR
+
+
+* 페이지 로드 시 오늘 날짜로 가져올 수 있게 startDate : today, endDate: today 설정 
+
+
 ```
 calendar - today 값으로 나오지 않음
 
@@ -301,3 +317,17 @@ calendar - today 값으로 나오지 않음
   }, []); // 컴포넌트가 마운트될 때 한 번만 실행
 
 ```
+
+# 6. 개발 후기
+
+
+### 아쉬운 점 & 배운점
+
+
+* Front 데이터를 가져오는 과정을 알 수 있게 되었습니다.
+  
+* tailwindcss, index.CSS 와 useEffect, useState를 통해 프로젝트에 녹일 수 있어 좋았습니다.
+
+* 변수가 많아 트러블 슈팅 시 문제점을 찾기 어려웠습니다.
+
+* redux를 사용하지 못해 아쉽습니다. axios로 데이터를 가져오고 user_idx(authData) , modal에 적용하였습니다.
