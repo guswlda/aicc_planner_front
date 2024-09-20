@@ -241,6 +241,11 @@ index.css
 
 # 4. 배포 
 
+<p align="center">
+  <img src="./images/fullflow.png">
+</p>
+
+
 ```
 # Front Deploy
 
