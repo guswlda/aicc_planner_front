@@ -45,7 +45,7 @@
 
 # 2. 개발 환경
 
-* 기술 스택
+### 기술 스택
 
 ```
 📦 Front - React App
@@ -92,7 +92,7 @@
 
 # 3. 구현 기능
 
-* Google 지도 구현하여 여행 계획 참고
+### Google 지도 구현하여 여행 계획 참고
 
 <p align="center">
   <img src="./images/MapApi.png">
@@ -137,7 +137,7 @@ export default GoogleMapComponent; // 컴포넌트 내보내기
 
 ```
 
-* 달력 모듈 사용
+### 달력 모듈 사용
 
 * 선택 한 이유 - 디자인 커스텀, 달력 날짜 선택 가능
 
@@ -194,29 +194,73 @@ index.css
 
 ```
 
-* 여행 목록 생성
+### 여행 목록 생성
 
 <p align="center">
   <img src="./images/travelproject.png">
 </p>
 
 
+```
+ useEffect(() => {
+    // 컴포넌트가 처음 렌더링될 때 서버에서 데이터를 가져옴
+    const fetchCalendarData = async () => {
+      try {
+        // 서버에 GET 요청을 보내서 데이터를 받아옴
+        const response = await axios.get(
+          `https://plannerback.guswldaiccproject.com/get_calendar_date/${authData.user_idx}`
+        );
 
+        // 서버에서 응답받은 데이터가 있을 때 처리
+        if (response.data && response.data.length > 0) {
+          // 서버에서 받아온 첫 번째 데이터에서 필요한 값들을 가져옴
+          const { project_idx, start_date, end_date } = response.data[0];
 
+          // 받아온 프로젝트 ID와 날짜를 상태 값에 설정
+          setProjectIdx(project_idx);
+          setStartDate(subtractOneDay(start_date) || ''); // 시작 날짜를 하루 빼서 설정
+          setEndDate(subtractOneDay(end_date) || ''); // 종료 날짜도 하루 빼서 설정
+        }
+      } catch (error) {
+        // 데이터를 가져오는 중에 오류가 발생하면 콘솔에 출력
+        console.error('캘린더 데이터를 가져오는 중 오류 발생:', error);
+      }
+    };
 
+    // 함수 호출 (서버에서 데이터 가져옴)
+    fetchCalendarData();
+  }, [authData.user_idx]); // 사용자 ID가 변경될 때마다 데이터를 다시 가져옴
 
-
-
-
-
-
-
-
-
-
-
+```
 
 # 4. 배포 
+
+```
+# Front Deploy
+
+## Deploy Structure
+├── 📦 Docker Hub
+│   ├── 🐳 Node 이미지
+│   ├── 🏗️ Build 이미지
+│   └── 🌐 Nginx 이미지
+│
+├── ☁️ AWS
+│   ├── 🖥️ EC2 인스턴스
+│   │   ├── 🔒 SSL HTTPS 인증서
+│   │   ├── 🌐 Route 53
+│   │   └── 📡 CloudFront
+│   │
+│   └── 🔧 설정
+│       ├── 🔑 보안 그룹
+│       ├── 📜 IAM 역할
+│       └── 🌍 VPC 설정
+│
+└── 🚀 GitHub Actions
+    ├── ⚙️ .github/workflows/cicd.yml
+    ├── 📄 GitHub 환경 파일
+    └── 🏃 Action Runner
+
+```
 
 # 5. 트러블 슈팅
 
