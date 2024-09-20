@@ -89,7 +89,7 @@ const Calendar = () => {
         <div className="flex flex-col items-center">
           <div className="text-2xl font-serif text-center mb-2">
             <p className="bg-slate-100 px-2 rounded-md">
-              여행 계획 날짜가 어떻게 되시나요?
+              여행 계획 날짜를 선택해주세요.
             </p>
           </div>
           <div className="w-[80%] flex flex-col ">
