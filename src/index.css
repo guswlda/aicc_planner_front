@@ -131,40 +131,40 @@ body {
   border-radius: 100px;
 }
 
-/* calendar custom text */
+/* 캘린더 커스텀 텍스트 */
 .custom-calendar .rdrCalendarWrapper {
-  font-size: 1.2rem; /* Adjust the base font size */
-  color: #1f2937; /* from-gray-700 */
-  width:100%;
+  font-size: 1.2rem; /* 기본 글꼴 크기 조정 */
+  color: #1f2937; /* 텍스트 색상 설정 (회색-700) */
+  width: 100%; /* 너비 100% 설정 */
 }
 
 .custom-calendar .rdrMonthAndYearPickers select,
 .custom-calendar .rdrMonthPicker select,
 .custom-calendar .rdrYearPicker select {
-  font-size: 1.2rem; /* Adjust dropdown font size */
+  font-size: 1.2rem; /* 드롭다운 글꼴 크기 조정 */
 }
 
 .custom-calendar .rdrDayNumber span {
-  font-size: 1.2rem; /* Adjust day number font size */
+  font-size: 1.2rem; /* 날짜 번호 글꼴 크기 조정 */
 }
 
 .custom-calendar .rdrDayToday span {
-  font-size: 1.25rem; /* Adjust day number font size */
-
+  font-size: 1.25rem; /* 오늘 날짜 글꼴 크기 조정 */
 }
 
-.custom-calendar .rdrDateDisplay{
-  display: none;
+.custom-calendar .rdrDateDisplay {
+  display: none; /* 날짜 표시 숨김 */
 }
 
 .custom-calendar .rdrWeekDay {
-  font-size: 1.2rem; /* Adjust weekday name font size */
-  text-align: center;
+  font-size: 1.2rem; /* 주중 이름 글꼴 크기 조정 */
+  text-align: center; /* 중앙 정렬 */
 }
 
 .rdrDefinedRangesWrapper {
-  display: none;
+  display: none; /* 정의된 범위 숨김 */
 }
+
 
 .input-placeholder::placeholder {
   font-weight: bold; /* Make placeholder text bold */
