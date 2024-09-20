@@ -139,6 +139,12 @@ export default GoogleMapComponent; // 컴포넌트 내보내기
 
 ### 달력 모듈 사용
 
+
+<p align="center">
+  <img src="./images/calendar.png">
+</p>
+
+
 * 선택 한 이유 - 디자인 커스텀, 달력 날짜 선택 가능
 
 * React - NPM 달력 모듈
