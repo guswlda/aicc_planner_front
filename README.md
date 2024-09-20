@@ -47,6 +47,8 @@
 
 ### 기술 스택
 
+* React 
+
 ```
 # 📦 Front - React App
 ├── 📂 .github
@@ -92,7 +94,9 @@
 
 # 3. 구현 기능
 
-### Google 지도 구현하여 여행 계획 참고
+### Google 지도 
+
+* 여행 계획 시 참조할 지도
 
 <p align="center">
   <img src="./images/MapApi.png">
@@ -119,6 +123,7 @@ const center = {
 };
 
 const GoogleMapComponent = () => {
+
   // Google Maps API 로딩 상태 확인
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script', // 스크립트 ID
@@ -137,19 +142,22 @@ export default GoogleMapComponent; // 컴포넌트 내보내기
 
 ```
 
-### 달력 모듈 사용
+### 달력
+
+
+* React - NPM 달력 모듈
+
+
+* 디자인 커스텀 가능, 달력 날짜 선택 가능
+
+
+* 참고 사이트 : https://www.npmjs.com/package/react-date-range
 
 
 <p align="center">
   <img src="./images/calendar.png">
 </p>
 
-
-* 선택 한 이유 - 디자인 커스텀, 달력 날짜 선택 가능
-
-* React - NPM 달력 모듈
-
-참고 사이트 : https://www.npmjs.com/package/react-date-range
 
 ```
 <DateRangePicker
@@ -200,7 +208,9 @@ index.css
 
 ```
 
+
 ### 여행 목록 생성
+
 
 <p align="center">
   <img src="./images/travelproject.png">
@@ -209,9 +219,11 @@ index.css
 
 ```
  useEffect(() => {
+
     // 컴포넌트가 처음 렌더링될 때 서버에서 데이터를 가져옴
     const fetchCalendarData = async () => {
       try {
+
         // 서버에 GET 요청을 보내서 데이터를 받아옴
         const response = await axios.get(
           `https://plannerback.guswldaiccproject.com/get_calendar_date/${authData.user_idx}`
@@ -240,6 +252,10 @@ index.css
 ```
 
 # 4. 배포 
+
+
+### FRONT & BACK FLOW CHART
+
 
 <p align="center">
   <img src="./images/fullflow.png">
@@ -273,6 +289,7 @@ index.css
 
 ```
 
+
 # 5. 트러블 슈팅
 
 
@@ -290,7 +307,9 @@ index.css
 Google Map - isloading
 
 const GoogleMapComponent = () => {
+
   const { isLoaded } = useJsApiLoader({
+
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_MAP_API_KEY,
   });
@@ -305,7 +324,7 @@ const GoogleMapComponent = () => {
 ```
 
 
-### 캘린더 당일 날짜 표현 되지 않는 ERROR
+### 캘린더 날짜 랜덤 ERROR
 
 
 * 페이지 로드 시 오늘 날짜로 가져올 수 있게 startDate : today, endDate: today 설정 
@@ -315,6 +334,7 @@ const GoogleMapComponent = () => {
 calendar - today 값으로 나오지 않음
 
   useEffect(() => {
+
     // 페이지가 로드될 때 오늘 날짜로 기본 설정
     const today = new Date();
     setSelectionRange({
@@ -323,8 +343,8 @@ calendar - today 값으로 나오지 않음
       key: 'selection',
     });
 
-    // 기존의 데이터를 가져오는 함수를 주석 처리함
-    // fetchCalendarData(); // 기존에 데이터를 가져오는 로직을 사용하지 않음
+    // fetchCalendarData();
+
   }, []); // 컴포넌트가 마운트될 때 한 번만 실행
 
 ```
