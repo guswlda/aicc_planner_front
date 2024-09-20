@@ -47,6 +47,8 @@
 
 ### 기술 스택
 
+* React 
+
 ```
 # 📦 Front - React App
 ├── 📂 .github
@@ -92,7 +94,9 @@
 
 # 3. 구현 기능
 
-### Google 지도 구현하여 여행 계획 참고
+### Google 지도 
+
+* 여행 계획 시 참조할 지도
 
 <p align="center">
   <img src="./images/MapApi.png">
@@ -137,19 +141,22 @@ export default GoogleMapComponent; // 컴포넌트 내보내기
 
 ```
 
-### 달력 모듈 사용
+### 달력
+
+
+* React - NPM 달력 모듈
+
+
+* 디자인 커스텀 가능, 달력 날짜 선택 가능
+
+
+* 참고 사이트 : https://www.npmjs.com/package/react-date-range
 
 
 <p align="center">
   <img src="./images/calendar.png">
 </p>
 
-
-* 선택 한 이유 - 디자인 커스텀, 달력 날짜 선택 가능
-
-* React - NPM 달력 모듈
-
-참고 사이트 : https://www.npmjs.com/package/react-date-range
 
 ```
 <DateRangePicker
@@ -200,7 +207,9 @@ index.css
 
 ```
 
+
 ### 여행 목록 생성
+
 
 <p align="center">
   <img src="./images/travelproject.png">
@@ -241,6 +250,10 @@ index.css
 
 # 4. 배포 
 
+
+### FRONT & BACK FLOW CHART
+
+
 <p align="center">
   <img src="./images/fullflow.png">
 </p>
@@ -272,6 +285,7 @@ index.css
     └── 🏃 Action Runner
 
 ```
+
 
 # 5. 트러블 슈팅
 
@@ -305,7 +319,7 @@ const GoogleMapComponent = () => {
 ```
 
 
-### 캘린더 당일 날짜 표현 되지 않는 ERROR
+### 캘린더 날짜 랜덤 ERROR
 
 
 * 페이지 로드 시 오늘 날짜로 가져올 수 있게 startDate : today, endDate: today 설정 
