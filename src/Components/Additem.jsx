@@ -20,7 +20,7 @@ const Additem = () => {
           >
             <span className="border border-gray-500 rounded-md flex gap-2 p-3">
               <GoPlusCircle />
-              여행 목록 추가하기
+              여행 정보 추가하기
             </span>
           </button>
         </div>
