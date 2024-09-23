@@ -89,7 +89,6 @@
 │   └── 📄 (의존성 및 프로젝트 정보)
 │
 └── 📄 README.md
-
 ```
 
 # 3. 구현 기능
@@ -139,7 +138,6 @@ const GoogleMapComponent = () => {
 };
 
 export default GoogleMapComponent; // 컴포넌트 내보내기
-
 ```
 
 ### 달력
@@ -204,8 +202,6 @@ index.css
 .rdrDefinedRangesWrapper {
   display: none; /* 정의된 범위 숨김 */
 }
-
-
 ```
 
 
@@ -248,7 +244,6 @@ index.css
     // 함수 호출 (서버에서 데이터 가져옴)
     fetchCalendarData();
   }, [authData.user_idx]); // 사용자 ID가 변경될 때마다 데이터를 다시 가져옴
-
 ```
 
 # 4. 배포 
@@ -286,7 +281,6 @@ index.css
     ├── ⚙️ .github/workflows/cicd.yml
     ├── 📄 GitHub 환경 파일
     └── 🏃 Action Runner
-
 ```
 
 
@@ -320,7 +314,6 @@ const GoogleMapComponent = () => {
     <div>Loading</div>
   );
 };
-
 ```
 
 
@@ -346,7 +339,6 @@ calendar - today 값으로 나오지 않음
     // fetchCalendarData();
 
   }, []); // 컴포넌트가 마운트될 때 한 번만 실행
-
 ```
 
 # 6. 개발 후기
