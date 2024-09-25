@@ -6,15 +6,6 @@
   <img src="./images/mainpage.png">
 </p>
 
-<P align="justify">
-  배포 URL: https://myplanner.guswldaiccproject.com
-
-  
-  Test_ID : Test@gmail.com
-
-
-  TEST_PW : 12345
-
 
 </p>
 
